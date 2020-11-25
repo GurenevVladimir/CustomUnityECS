@@ -5,7 +5,7 @@ namespace TestProject.DevOOP.Units.Modules
 {
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(SphereCollider))]
-    internal sealed class UnitPhysicModule : BaseUnitModule
+    public sealed class UnitPhysicModule : BaseUnitModule
     {
         private Rigidbody _rigidbody;
         private SphereCollider _collider;

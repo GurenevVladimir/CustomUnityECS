@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace TestProject.DevOOP.Units.Modules
 {
-    internal abstract class BaseUnitModule : MonoBehaviour, IUnitModule
+    public abstract class BaseUnitModule : MonoBehaviour, IUnitModule
     {
         private void Awake()
         {
