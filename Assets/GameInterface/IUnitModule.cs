@@ -1,10 +1,11 @@
 ﻿using System;
+using UnityEngine;
 
-namespace TestProject.DevOOP.Units.Modules
+namespace TestProject.DevOOP
 {
     public interface IUnitModule
     {
-        void AddModule(Action<Type, EventHandler> addEventHandler);
+        void AddModule(Action<Type, EventHandler> addEventHandler, GameObject owner);
         void RemoveModule(Action<Type, EventHandler> removeEventHandler);
     }
 }

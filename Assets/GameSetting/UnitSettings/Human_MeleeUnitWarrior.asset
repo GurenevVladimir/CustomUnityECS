@@ -10,6 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6d8a8dccf2a35e459e1435458becdaf, type: 3}
-  m_Name: MeleeUnitWarrior
+  m_Name: Human_MeleeUnitWarrior
   m_EditorClassIdentifier: 
-  useUnitModulesType: 01000000
+  _unitType: 2
+  _unitVisual: {fileID: 5821739431096649613, guid: 9946e1be26d38e74692985762c913dcd,
+    type: 3}
+  _useUnitModulesType: 010000000200000003000000

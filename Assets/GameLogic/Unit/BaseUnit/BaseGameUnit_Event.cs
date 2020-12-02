@@ -9,8 +9,6 @@ namespace TestProject.DevOOP.Units
 {
     public abstract partial class BaseGameUnit : MonoBehaviour, IUpdatable
     {
-        //test
-        public float test_timer;
         // текущий список всех событий модулей Юнита, декомпозиция по типу события
         private EventHandlerList _unitEventList;
 
@@ -19,12 +17,21 @@ namespace TestProject.DevOOP.Units
         {
             _unitEventList = new EventHandlerList();
         }
-
+        /// <summary>
+        /// Function add unit workable event. 
+        /// <para>Used <see cref="EventHandler"/></para>
+        /// </summary>
+        /// <param name="eventKey">Unique event key == EventArgs child type.</param>
+        /// <param name="eventCallback">Event delegate.</param>
         private void AddUnitEvent(Type eventKey, EventHandler eventCallback)
         {
             _unitEventList.AddHandler(eventKey, eventCallback);
         }
-
+        /// <summary>
+        /// Function execute unit workable event depending on state.
+        /// </summary>
+        /// <param name="eventkey">Unique event key == EventArgs child type.</param>
+        /// <param name="eventArg">Module use even data. </param>
         private void ExecutUnitEvent(Type eventkey, EventArgs eventArg)
         {
             EventHandler copyEvent = (EventHandler)_unitEventList[eventkey];
@@ -35,17 +42,6 @@ namespace TestProject.DevOOP.Units
         private void RemoveUnitEvent(Type eventKey, EventHandler eventCallback)
         {
             _unitEventList.RemoveHandler(eventKey, eventCallback);
-        }
-
-        private IEnumerator Test()
-        {
-            yield return new WaitForSeconds(test_timer);
-
-            var eventArg = new UnitMovementEventArgs(Vector3.zero, 0f);
-            ExecutUnitEvent(typeof(UnitMovementEventArgs), eventArg);
-
-            yield return new WaitForSeconds(test_timer + 3);
-            ExecutUnitEvent(typeof(UnitMovementEventArgs), eventArg);
         }
     }
 }
