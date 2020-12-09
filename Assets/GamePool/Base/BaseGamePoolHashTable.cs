@@ -31,7 +31,7 @@ namespace TestProject.DevOOP.GamePool
 
             if(!_poolTable.TryGetValue(GetPoolObjectKey(prototype), out var currentTable))
             {
-                poolObject = (T)CreatePoolObject(prototype);
+                poolObject = (T)CreatePoolObjectByObject(prototype);
             }
             else
             {

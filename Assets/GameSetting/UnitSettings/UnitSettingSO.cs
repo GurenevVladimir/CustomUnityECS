@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System;
+
 using TestProject.DevOOP.Units.Modules;
 
 namespace TestProject.DevOOP.Settings
@@ -12,6 +13,8 @@ namespace TestProject.DevOOP.Settings
         public GameObject UnitVisual { get => _unitVisual; }
         [SerializeField] private GameObject _unitVisual;
         [SerializeField] private ModuleType[] _useUnitModulesType;
+        //AI test
+        [SerializeField] private AISettingSO _unitAISetting;
 
         public ModuleType GetModuleType(int index)
         {

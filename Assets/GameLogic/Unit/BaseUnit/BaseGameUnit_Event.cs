@@ -3,11 +3,9 @@ using System.Collections;
 using System.ComponentModel;
 using UnityEngine;
 
-using TestProject.DevOOP.Units.Events;
-
 namespace TestProject.DevOOP.Units
 {
-    public abstract partial class BaseGameUnit : MonoBehaviour, IUpdatable
+    public abstract partial class BaseGameUnit : IExecutableEvent
     {
         // текущий список всех событий модулей Юнита, декомпозиция по типу события
         private EventHandlerList _unitEventList;
@@ -32,7 +30,7 @@ namespace TestProject.DevOOP.Units
         /// </summary>
         /// <param name="eventkey">Unique event key == EventArgs child type.</param>
         /// <param name="eventArg">Module use even data. </param>
-        private void ExecutUnitEvent(Type eventkey, EventArgs eventArg)
+        public void ExecutUnitEvent(Type eventkey, EventArgs eventArg)
         {
             EventHandler copyEvent = (EventHandler)_unitEventList[eventkey];
             if (copyEvent is null) return;

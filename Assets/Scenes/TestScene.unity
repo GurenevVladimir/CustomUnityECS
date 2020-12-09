@@ -897,7 +897,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 439006733}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -50.79, y: 0, z: -1.03}
+  m_LocalPosition: {x: -9, y: 0, z: -4.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -916,8 +916,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unitSetting: {fileID: 11400000, guid: f8c7bbdfea6dab84b868b08396603c03, type: 2}
-  _movepointIndex: 0
-  _isMove: 0
 --- !u!4 &450878836 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 7a93e07023f417142881f9ebea0e642b,
@@ -1497,6 +1495,50 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 746753671}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1285674105
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1285674107}
+  - component: {fileID: 1285674106}
+  m_Layer: 0
+  m_Name: Human Warior (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1285674106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285674105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0540c644885bdc48b78119851e3685d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _unitSetting: {fileID: 11400000, guid: f8c7bbdfea6dab84b868b08396603c03, type: 2}
+--- !u!4 &1285674107
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285674105}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9, y: 0, z: 4.88}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1290784409
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 using TestProject.DevOOP.Settings;
-using TestProject.DevOOP.Units.Events;
 
 namespace TestProject.DevOOP.Units
 {
@@ -20,17 +18,15 @@ namespace TestProject.DevOOP.Units
     /// </item>
     /// </list>
     /// </remarks>
-    public abstract partial class BaseGameUnit : MonoBehaviour, IUpdatable
+    public abstract partial class BaseGameUnit : MonoBehaviour
     {
         [SerializeField] private UnitSettingSO _unitSetting;
-        public int MovepointIndex { get => _movepointIndex; }
-        [SerializeField] private int _movepointIndex;
-        [SerializeField] private bool _isMove;
 
-        //TODO Сделать остальные раширения класса
+        //TODO Сделать остальные раширения класса BaseGameUnit - AI
         #region Partial Function
         partial void CreateUnitEvent();
         partial void CreateUnitModules();
+        partial void CreateUnitAI();
 
         #endregion
 
@@ -38,48 +34,8 @@ namespace TestProject.DevOOP.Units
         {
             CreateUnitEvent();
             CreateUnitModules();
+            CreateUnitAI();
         }
-        //test!
-        private void Start()
-        {
-            StartCoroutine(TestMoveState());
-
-        }
-        //TODO Сделать STM для юнита
-        IEnumerator TestMoveState()
-        {
-            yield return new WaitForSeconds(2f);
-            while (true)
-            {
-                yield return new WaitForFixedUpdate();
-                if (_isMove)
-                {
-
-                }
-                else
-                {
-                    _Debug.Log($"test - { Core.GameInstanceHandler.Instance.GetMovePointForUnit?.Invoke(this)}");
-                    ExecutUnitEvent(typeof(UnitMovementEventArgs), new UnitMovementEventArgs(Core.GameInstanceHandler.Instance.GetMovePointForUnit.Invoke(this), 1f));
-                    _isMove = true;
-                }
-            }
-            
-        }
-
-        #region Absttract Function
-
-        public abstract void OnFixedUpdate();
-        public abstract void OnUpdate();
-        #endregion
-
-        #region Virtual Function
-
-        public virtual UnitType GetUnitType()
-        {
-            return _unitSetting.UnitType;
-        }
-
-        #endregion
     }
 }
 

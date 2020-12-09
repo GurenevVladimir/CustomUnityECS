@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 using TestProject.DevOOP.Factory;
+using TestProject.DevOOP.GamePool;
 
 namespace TestProject.DevOOP
 {
@@ -46,14 +48,26 @@ namespace TestProject.DevOOP
         public T GetInstanceByType<T>() where T : class
         {
             T currentInstance = default;
-            var instanceType = typeof(T);
-            for(int i = 0; i < _instanceStorage.Count; ++i)
+            try
             {
-                if(_instanceStorage[i].GetType() == instanceType)
+                var instanceType = typeof(T);
+                for (int i = 0; i < _instanceStorage.Count; ++i)
                 {
-                    currentInstance = (T)_instanceStorage[i];
-                    break;
-                }   
+                    if (_instanceStorage[i].GetType() == instanceType)
+                    {
+                        currentInstance = (T)_instanceStorage[i];
+                        break;
+                    }
+                }
+                if(currentInstance == default)
+                {
+                    _Debug.Log($"Exeption! В списке объектов Медиатора - <b>{GetType().Name}</b>, нет реализации - <b>{currentInstance.GetType().Name}</b> нужна проверка!", DebugColor.red);
+                    throw new Exception();
+                }
+            }
+            catch(Exception e)
+            {
+                GameUtility.ExceptionHandler(e);
             }
             return currentInstance;
         }

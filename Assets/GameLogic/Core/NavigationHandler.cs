@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 using TestProject.DevOOP.Units;
 
 namespace TestProject.DevOOP.Core
 {
+    /// <summary>
+    /// This class contains and work all movepoint on game field.
+    /// </summary>
     public sealed class NavigationHandler
     {
         private IList<Vector3> _gameMovePoint;
@@ -14,7 +16,10 @@ namespace TestProject.DevOOP.Core
         {
             FillMovePoint();
         }
-
+        /// <summary>
+        /// Find and fill movepoint list.
+        /// <para>Use link type - <see cref="GameNavPoint"/></para>
+        /// </summary>
         private void FillMovePoint()
         {
             List<GameNavPoint> points = new List<GameNavPoint>(GameObject.FindObjectsOfType<GameNavPoint>());
@@ -56,24 +61,29 @@ namespace TestProject.DevOOP.Core
                 return pointPos;
             }
         }
-
-        internal Vector3 GetMovePoint(BaseGameUnit sender)
+        /// <summary>
+        /// Get target movepoint for unit by unit type - <see cref="UnitType"/>
+        /// </summary>
+        /// <param name="unitData">Current unit data.</param>
+        /// <returns>Movepoint coordinate <see cref="Vector3"/></returns>
+        internal Vector3 GetMovePoint(UnitDataContainer unitData)
         {
-            if(sender.GetUnitType() == UnitType.Player)
+            //TODO НЕ забыть еределать под тек индекс точки
+            if(unitData.UnitType == UnitType.Player)
             {
-                return GetMovePointByIndexPlayer(sender.MovepointIndex);
+                return GetMovePointByIndexPlayer(unitData.CurrentMovePointIndex);
             }
             else
             {
-                return GetMovePointByIndexEnemy(sender.MovepointIndex);
+                return GetMovePointByIndexEnemy(unitData.CurrentMovePointIndex);
             }
         }
 
         private Vector3 GetMovePointByIndexPlayer(int index)
         {
-            if(index > _gameMovePoint.Count)
+            if(index >= _gameMovePoint.Count)
             {
-                index = _gameMovePoint.Count;
+                index = _gameMovePoint.Count - 1;
             }
             return _gameMovePoint[index];
         }

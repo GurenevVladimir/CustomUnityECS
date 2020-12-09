@@ -5,7 +5,7 @@ namespace TestProject.DevOOP.Units.Events
 {
     public sealed class UnitMovementEventArgs : EventArgs
     {
-        public UnitMovementEventArgs(Vector3 movePoint, float moveSpeed)
+        public UnitMovementEventArgs(Vector3 movePoint = default, float moveSpeed = default)
         {
             MovePoint = movePoint;
             MoveSpeed = moveSpeed;

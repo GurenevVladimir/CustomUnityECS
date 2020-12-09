@@ -27,17 +27,12 @@ namespace TestProject.DevOOP.Units.Modules
         {
             var message = (UnitMovementEventArgs)eventArgs;
             string movementAnim = "Idle";
-            if(message.MoveSpeed > 0f)
+            if(message.MoveSpeed > GameConst.IdleUnitSpeed)
             {
                 movementAnim = "Move";
             }
 
             UnitPlayAnimation(movementAnim);
-        }
-
-        private void AttackEventCallback(object sender, EventArgs eventArgs)
-        {
-
         }
 
         private void UnitPlayAnimation(string animationName, float normalTime = 0f)

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace TestProject.DevOOP.Core
 {
@@ -11,16 +9,8 @@ namespace TestProject.DevOOP.Core
     /// <seealso cref="GameInitialization"/>
     internal sealed class GameInstanceHandler : MonoSingleton<GameInstanceHandler>
     {
-        //TODO Подумать куда поместить все "Помошники"
-        private NavigationHandler _navHandler;
-
-        internal readonly Func<Units.BaseGameUnit, Vector3> GetMovePointForUnit;
-
-        internal GameInstanceHandler()
-        {
-            GetMovePointForUnit += GetMovePoint;
-        }
-        //таже проблема...
+        //test
+        private bool _speedUp;
 
         [RuntimeInitializeOnLoadMethod]
         internal static void GameInitialization()
@@ -28,16 +18,25 @@ namespace TestProject.DevOOP.Core
             _Debug.Log("Start Game!", DebugColor.green);
             var _self = GameInstanceHandler.Instance;
             _self.gameObject.name = ">>GameInstanceHandler<<";
+
+            Mediator.Instance.SetInstance(new NavigationHandler());
         }
 
-        private void Awake()
+        private void Update()
         {
-            _navHandler = new NavigationHandler();
-        }
-        //все таже проблема...если будет много "Помошников", то будет грязь
-        private Vector3 GetMovePoint(Units.BaseGameUnit unit)
-        {
-            return _navHandler.GetMovePoint(unit);
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (_speedUp)
+                {
+                    Time.timeScale = 1;
+                }
+                else
+                {
+                    Time.timeScale = 3;
+                }
+
+                _speedUp = !_speedUp;
+            }
         }
     }
 }

@@ -15,4 +15,5 @@ MonoBehaviour:
   _unitType: 2
   _unitVisual: {fileID: 5821739431096649613, guid: 9946e1be26d38e74692985762c913dcd,
     type: 3}
-  _useUnitModulesType: 010000000200000003000000
+  _useUnitModulesType: 020000000300000001000000
+  _unitAISetting: {fileID: 0}

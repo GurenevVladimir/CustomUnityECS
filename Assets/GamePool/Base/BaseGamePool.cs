@@ -19,7 +19,7 @@
             _Debug.Log("Create new Base pool!");
         }
 
-        protected virtual object CreatePoolObject(object prototype)
+        protected virtual object CreatePoolObjectByObject(object prototype)
         {
             return default;
         }

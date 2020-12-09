@@ -7,7 +7,7 @@ using TestProject.DevOOP.Units.Modules;
 
 namespace TestProject.DevOOP.Units
 {
-    public abstract partial class BaseGameUnit : MonoBehaviour, IUpdatable
+    public abstract partial class BaseGameUnit
     {
         // текущий список всех модулей Юнита
         private List<IUnitModule> _unitModuleList;
