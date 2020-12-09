@@ -11,7 +11,8 @@ namespace TestProject.DevOOP.Units.Events
             MoveSpeed = moveSpeed;
         }
 
-        public Vector3 MovePoint { set; get; }
+        public Vector3 MovePoint { set { _movePoint = value; } get{ return _movePoint; } }
+        private Vector3 _movePoint;
         public float MoveSpeed { set; get; }
     }
 }

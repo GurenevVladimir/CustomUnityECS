@@ -28,11 +28,10 @@ namespace TestProject.DevOOP.Units
         /// <summary>
         /// Function execute unit workable event depending on state.
         /// </summary>
-        /// <param name="eventkey">Unique event key == EventArgs child type.</param>
         /// <param name="eventArg">Module use even data. </param>
-        public void ExecutUnitEvent(Type eventkey, EventArgs eventArg)
+        public void ExecutUnitEvent(EventArgs eventArg)
         {
-            EventHandler copyEvent = (EventHandler)_unitEventList[eventkey];
+            EventHandler copyEvent = (EventHandler)_unitEventList[eventArg.GetType()];
             if (copyEvent is null) return;
             copyEvent(this, eventArg);
         }

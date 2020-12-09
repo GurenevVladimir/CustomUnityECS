@@ -4,6 +4,6 @@ namespace TestProject.DevOOP
 {
     public interface IExecutableEvent
     {
-        void ExecutUnitEvent(Type eventkey, EventArgs eventArg);
+        void ExecutUnitEvent(EventArgs eventArg);
     }
 }

@@ -36,6 +36,8 @@ namespace TestProject.DevOOP
             _instanceStorage = new List<object>();
 
             SetInstance(new ModuleGameFactory());
+            SetInstance(new EventArgsFactory());
+            SetInstance(new UnitEventArgsPool());
             //добавляем фабрики и прочее, если используем в игре
         }
 

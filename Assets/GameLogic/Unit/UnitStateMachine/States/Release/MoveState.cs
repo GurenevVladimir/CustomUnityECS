@@ -11,7 +11,10 @@ namespace TestProject.DevOOP.Units.USM
         public override void EnterState()
         {
             _Debug.Log("Enter - Move State!");
-            owner.ExecutUnitEvent(typeof(UnitMovementEventArgs), new UnitMovementEventArgs(owner.UnitData.GetCurrentMovePoint(), GameConst.MoveUnitSpeed));
+            var arg = Mediator.Instance.GetInstanceByType<GamePool.UnitEventArgsPool>().Get(typeof(UnitMovementEventArgs)) as UnitMovementEventArgs;
+            arg.MoveSpeed = GameConst.MoveUnitSpeed;
+            arg.MovePoint = owner.UnitData.GetCurrentMovePoint();
+            owner.ExecutUnitEvent(arg);
         }
 
         public override Type ExecuteState()

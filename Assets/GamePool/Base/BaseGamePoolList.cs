@@ -6,6 +6,7 @@ namespace TestProject.DevOOP.GamePool
     {
         private IList<T> _poolList;
 
+        protected abstract T GetObjectInPool(object prototype, IList<T> list);
 
         protected override void CreateGamePool()
         {
@@ -43,20 +44,23 @@ namespace TestProject.DevOOP.GamePool
             }
         }
 
-        protected abstract T GetObjectInPool(object prototype, IList<T> list);
-
-        protected virtual bool ContainsOf(object checkObject)
+        private bool ContainsOf(object checkObject)
         {
             bool result = false;
             for(int i = 0; i < _poolList.Count; ++i)
             {
-                if(_poolList[i].GetType() == checkObject.GetType())
+                if(_Equals(_poolList[i], checkObject))
                 {
                     result = true;
                     break;
                 }
             }
             return result;
+        }
+
+        protected virtual bool _Equals(object obj1, object obj2)
+        {
+            return obj1.GetType() == (System.Type)obj2;
         }
     }
 }
